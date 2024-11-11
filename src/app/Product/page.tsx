@@ -5,25 +5,24 @@ const products = [
         id: 1,
         name: "DroneX Pro",
         description: "A high-performance drone with advanced features.",
-        price: "$499",
-        imageUrl: "/drone.png", // Placeholder image path
+        price: "$432",
+        imageUrl: "/drone.png", 
     },
     {
         id: 2,
         name: "SkyWalker 2",
         description: "Lightweight and powerful drone for aerial photography.",
-        price: "$699",
-        imageUrl: "/video-drone.png", // Placeholder image path
+        price: "$259",
+        imageUrl: "/video-drone.png", 
     },
     {
         id: 3,
         name: "AeroCam Mini",
         description: "Compact drone perfect for beginners and hobbyists.",
         price: "$299",
-        imageUrl: "/drone3.jpg", // Placeholder image path
+        imageUrl: "/drone3.jpg", 
     },
 
-    // Add more products as needed
 ];
 
 const Product = () => {
