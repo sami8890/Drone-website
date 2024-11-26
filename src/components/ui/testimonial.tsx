@@ -26,7 +26,7 @@ const testimonials: Testimonial[] = [
     company: "Aerial Media Solutions",
     quote:
       "These drones have completely transformed our aerial photography workflow. The precision and stability are unmatched.",
-    avatar: "/avatar-1.jpg",
+    avatar: "/testimonials/client1.png",
     rating: 5,
   },
   {
@@ -36,17 +36,17 @@ const testimonials: Testimonial[] = [
     company: "Environmental Mapping Institute",
     quote:
       "The advanced sensor technology provides unprecedented data collection capabilities for our ecological studies.",
-    avatar: "/avatar-2.jpg",
+    avatar: "/testimonials/client2.jpeg",
     rating: 4,
   },
   {
     id: 3,
-    name: "Elena Kim",
+    name: "John Doe",
     position: "Chief Innovation Officer",
     company: "TechFrontiers Inc.",
     quote:
       "A game-changing solution that pushes the boundaries of drone technology and industrial applications.",
-    avatar: "/avatar-3.jpg",
+    avatar: "/testimonials/client3.jpeg",
     rating: 5,
   },
 ];

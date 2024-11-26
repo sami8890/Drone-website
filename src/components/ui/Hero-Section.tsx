@@ -185,7 +185,7 @@ export default function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Link href="/product">
+              <Link href="/Product">
               <button className="px-6 py-3 rounded-lg bg-gradient-to-r from-lime-500 to-lime-600 text-white font-medium hover:shadow-lg hover:shadow-lime-500/25 transition-all duration-300 transform hover:-translate-y-1">
                 Explore Now
               </button>

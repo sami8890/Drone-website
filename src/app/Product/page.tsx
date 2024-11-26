@@ -156,7 +156,7 @@ const ProductsSection: React.FC = () => {
         {
             name: "Swift Explorer",
             price: "$899",
-            image: "/one.png",
+            image: "/drones/drone1.png",
             category: "Amateur",
             features: ["2.7K Camera", "30min Flight Time", "5km Range"],
             badge: "New",
@@ -164,7 +164,7 @@ const ProductsSection: React.FC = () => {
         {
             name: "Precision Elite",
             price: "$2,499",
-            image: "/one.png",
+            image: "/drones/drone2.png",
             category: "Professional",
             features: ["8K Camera", "60min Flight Time", "15km Range"],
             badge: "Premium",
@@ -172,7 +172,7 @@ const ProductsSection: React.FC = () => {
         {
             name: "Nano Scout",
             price: "$499",
-            image: "/one.png",
+            image: "/drones/drone3.png",
             category: "Beginner",
             features: ["1080p Camera", "20min Flight Time", "2km Range"],
             badge: "Popular",
@@ -180,7 +180,7 @@ const ProductsSection: React.FC = () => {
         {
             name: "Atlas Heavy",
             price: "$3,999",
-            image: "/one.png",
+            image: "/drones/drone4.png",
             category: "Industrial",
             features: ["Thermal Camera", "45min Flight Time", "20km Range"],
             badge: "Pro Choice",
@@ -188,7 +188,7 @@ const ProductsSection: React.FC = () => {
         {
             name: "Mini Spark",
             price: "$699",
-            image: "/one.png",
+            image: "/drones/drone5.png",
             category: "Consumer",
             features: ["2.7K Camera", "25min Flight Time", "4km Range"],
             badge: "Compact",
