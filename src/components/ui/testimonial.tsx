@@ -138,10 +138,10 @@ export default function TestimonialSection() {
       {/* Section Header */}
       <div className="relative max-w-4xl mx-auto text-center mb-12">
         <h2 className="text-4xl font-bold mb-4 tracking-wide">
-          What{" "}
+          What 
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-lime-300 to-lime-600">
-            Our Clients
-          </span>{" "}
+            Our Clients 
+          </span>
           Say
         </h2>
         <p className="text-gray-300 max-w-2xl mx-auto">
@@ -162,7 +162,7 @@ export default function TestimonialSection() {
           >
             <Quote className="text-lime-500 mb-4 opacity-50 w-12 h-12" />
 
-            <p className="text-gray-300 mb-6 italic">"{testimonial.quote}"</p>
+            <p className="text-gray-300 mb-6 italic">&quot;{testimonial.quote}&quot;</p>
 
             <div className="flex items-center space-x-4">
               <div className="relative w-12 h-12">
