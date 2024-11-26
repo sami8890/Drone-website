@@ -1,15 +1,14 @@
-import Navbar from "@/components/navbar";
 import Hero from "@/components/ui/Hero-Section";
-import Products from "./Product/page";
-import Product from "./Product/page";
+import ProductsSection from "./Product/page";
+import TestimonialSection from "@/components/ui/testimonial";
 
 export default function Home() {
   return (
     <section>
-      <Navbar />
+     
       <Hero />
-      <Product />
-
+      <ProductsSection/>
+      <TestimonialSection/>
     </section>
   );
 }

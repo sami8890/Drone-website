@@ -14,17 +14,19 @@ import { MenuIcon, Search, User, ShoppingCart } from "lucide-react";
 const navItems = [
   { title: "Home", path: "/" },
   { title: "Product", path: "/Product" },
-  { title: "Support", path: "/Support" },
+  { title: "Service", path: "/service" },
 ];
 
 export default function Navbar() {
   return (
     <div className="relative flex items-center justify-between px-8 py-3 bg-black text-white shadow-lg">
       {/* Logo */}
+      <Link href="/">
       <div className="flex items-center space-x-2">
         <span className="text-2xl font-bold text-lime-400">X</span>
         <span className="text-xl font-semibold tracking-wide">DroneS</span>
       </div>
+      </Link>
 
       {/* Navigation Links */}
       <div className="hidden md:flex space-x-8 text-sm font-medium">

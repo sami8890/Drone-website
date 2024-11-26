@@ -4,6 +4,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowDownCircle, Shield, Zap } from "lucide-react";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -141,7 +142,6 @@ export default function Hero() {
 
   return (
     <main className="relative min-h-screen flex flex-col bg-black text-white overflow-hidden">
-      {/* Background with gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a1b] via-[#000000] to-[#090920] animate-gradient-slow">
         <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_500px_at_50%_200px,#3e3e3e,transparent)]" />
       </div>
@@ -165,12 +165,13 @@ export default function Hero() {
             {/* Headline */}
             <h1 className="font-bold tracking-wide leading-none font-[Bebas Neue] uppercase transition-transform duration-300 ease-in-out hover:scale-105">
               <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-2 lg:mb-4">
-                <span className="inline-block">A</span>{" "}
+                <span className="inline-block">A</span>
                 <span className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-lime-300 to-lime-600">
                   NEW
-                </span>{" "}
+                </span>
                 <span className="inline-block">ERA</span>
               </span>
+           
               <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
                 OF DRONES
               </span>
@@ -184,9 +185,12 @@ export default function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <Link href="/product">
               <button className="px-6 py-3 rounded-lg bg-gradient-to-r from-lime-500 to-lime-600 text-white font-medium hover:shadow-lg hover:shadow-lime-500/25 transition-all duration-300 transform hover:-translate-y-1">
                 Explore Now
               </button>
+              </Link>
+
               <button className="px-6 py-3 rounded-lg border border-white/20 hover:bg-white/10 transition-colors duration-300">
                 Learn More
               </button>
