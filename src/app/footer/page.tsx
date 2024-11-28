@@ -86,30 +86,30 @@ export default function Footer() {
     }, []);
 
     const socialLinks = [
-        { icon: <Facebook className="w-6 h-6" />, href: "https://facebook.com", label: "Facebook" },
-        { icon: <Instagram className="w-6 h-6" />, href: "https://instagram.com", label: "Instagram" },
-        { icon: <Twitter className="w-6 h-6" />, href: "https://twitter.com", label: "Twitter" },
-        { icon: <Youtube className="w-6 h-6" />, href: "https://youtube.com", label: "YouTube" },
+        { icon: <Facebook className="w-6 h-6" />, href: "/under-development", label: "Facebook" },
+        { icon: <Instagram className="w-6 h-6" />, href: "/under-development", label: "Instagram" },
+        { icon: <Twitter className="w-6 h-6" />, href: "/under-development", label: "Twitter" },
+        { icon: <Youtube className="w-6 h-6" />, href: "/under-development", label: "YouTube" },
     ];
 
     const navigationLinks = {
         "Product Categories": [
-            { name: "Drone Models", href: "/drones" },
-            { name: "Accessories", href: "/accessories" },
-            { name: "Professional Series", href: "/pro-series" },
-            { name: "Custom Solutions", href: "/custom" },
+            { name: "Drone Models", href: "/under-development" },
+            { name: "Accessories", href: "/under-development" },
+            { name: "Professional Series", href: "/under-development" },
+            { name: "Custom Solutions", href: "/under-development" },
         ],
         Company: [
-            { name: "About Us", href: "/about" },
-            { name: "Careers", href: "/careers" },
-            { name: "Press", href: "/press" },
-            { name: "Investors", href: "/investors" },
+            { name: "About Us", href: "/under-development" },
+            { name: "Careers", href: "/under-development" },
+            { name: "Press", href: "/under-development" },
+            { name: "Investors", href: "/under-development" },
         ],
         Support: [
-            { name: "Help Center", href: "/help" },
-            { name: "Documentation", href: "/docs" },
-            { name: "Community", href: "/community" },
-            { name: "Contact Support", href: "/support" },
+            { name: "Help Center", href: "/under-development" },
+            { name: "Documentation", href: "/under-development" },
+            { name: "Community", href: "/under-development" },
+            { name: "Contact Support", href: "/under-development" },
         ],
     };
 
@@ -142,13 +142,10 @@ export default function Footer() {
                                     socialIconsRef.current[index] = el;
                                 }}
                                 aria-label={link.label}
-                                target="_blank"
-                                rel="noopener noreferrer"
                                 className="text-white hover:text-lime-500 transition-colors"
                             >
                                 {link.icon}
                             </Link>
-
                         ))}
                     </div>
                 </div>
@@ -205,19 +202,19 @@ export default function Footer() {
                 <div className="flex space-x-6 mb-4 md:mb-0">
                     <div className="flex items-center space-x-2 text-gray-300">
                         <Mail className="w-5 h-5 text-lime-500" />
-                        <span>info@dronex.com</span>
+                        <span>sami.gabol13@gmail.com</span>
                     </div>
                     <div className="flex items-center space-x-2 text-gray-300">
                         <Phone className="w-5 h-5 text-lime-500" />
-                        <span>+1 (555) 123-4567</span>
+                        <span>+92  3302855702</span>
                     </div>
                 </div>
 
                 <div className="flex space-x-4 text-gray-400 text-sm">
-                    <Link href="/privacy" className="hover:text-lime-500 transition-colors">
+                    <Link href="/under-development" className="hover:text-lime-500 transition-colors">
                         Privacy Policy
                     </Link>
-                    <Link href="/terms" className="hover:text-lime-500 transition-colors">
+                    <Link href="/under-development" className="hover:text-lime-500 transition-colors">
                         Terms of Service
                     </Link>
                     <span>© {new Date().getFullYear()} DroneX. All Rights Reserved</span>

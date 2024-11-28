@@ -81,8 +81,7 @@
 @layer base {
   * {
     @apply border-border;
+
   }
-  /* body {
-    @apply bg-[#111111]  text-[#E8ECE0]
-  } */
+  
 }

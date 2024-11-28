@@ -1,3 +1,4 @@
+// "main page  "// app/products/page.tsx 
 
 "use client";
 import React, { useEffect, useRef, useLayoutEffect } from "react";
@@ -5,7 +6,7 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ShoppingCart, BadgeCheck } from "lucide-react";
-
+import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger);
 
 interface ProductFeature {
@@ -14,6 +15,7 @@ interface ProductFeature {
 }
 
 interface Product {
+    slug: any;
     name?: string;
     price: string;
     image: string;
@@ -101,20 +103,26 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
                 </span>
             </div>
 
-            <div className="product-image relative h-48 mb-6 flex items-center justify-center">
-                <Image
-                    src={product.image}
-                    alt={product.name || "Product"}
-                    width={200}
-                    height={200}
-                    className="object-contain drop-shadow-[0_0_15px_rgba(0,255,150,0.2)]"
-                />
-            </div>
+            <Link href={`/Product/${product.slug}`}>
+                <div className="product-image relative h-48 mb-6 flex items-center justify-center">
+                    <Image
+                        src={product.image}
+                        alt={product.name || "Product"}
+                        width={200}
+                        height={200}
+                        className="object-contain drop-shadow-[0_0_15px_rgba(0,255,150,0.2)]"
+                    />
+                </div>
+            </Link>
 
             <div className="product-content space-y-4">
                 <div className="flex justify-between items-start">
                     <div>
-                        <h3 className="text-xl font-semibold">{product.name}</h3>
+                        <Link href={`/Product/${product.slug}`}>
+                            <h3 className="text-xl font-semibold hover:text-lime-400 transition-colors">
+                                {product.name}
+                            </h3>
+                        </Link>
                         <p className="text-gray-400 text-sm">{product.category}</p>
                     </div>
                     <span className="text-lime-400 font-bold">{product.price}</span>
@@ -129,16 +137,22 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
                     ))}
                 </ul>
 
-                <button className="w-full mt-4 px-4 py-2 rounded-lg bg-gradient-to-r from-lime-500 to-lime-600 text-white font-medium opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                    <span className="flex items-center justify-center">
-                        <ShoppingCart className="w-4 h-4 mr-2" />
-                        Add to Cart
-                    </span>
-                </button>
+                <Link
+                    href={`/Product/${product.slug}`}
+                    className="block w-full mt-4"
+                >
+                    <button className="w-full px-4 py-2 rounded-lg bg-gradient-to-r from-lime-500 to-lime-600 text-white font-medium opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                        <span className="flex items-center justify-center">
+                            <ShoppingCart className="w-4 h-4 mr-2" />
+                            View Details
+                        </span>
+                    </button>
+                </Link>
             </div>
         </div>
     );
 };
+
 
 const ProductsSection: React.FC = () => {
     const sectionRef = useRef<HTMLElement>(null);
@@ -147,6 +161,7 @@ const ProductsSection: React.FC = () => {
     const products: Product[] = [
         {
             name: "Phantom Pro X",
+            slug: "phantom-pro-x",
             price: "$1,299",
             image: "/one.png",
             category: "Professional",
@@ -155,6 +170,7 @@ const ProductsSection: React.FC = () => {
         },
         {
             name: "Swift Explorer",
+            slug: "swift-explorer",
             price: "$899",
             image: "/drones/drone1.png",
             category: "Amateur",
@@ -163,6 +179,7 @@ const ProductsSection: React.FC = () => {
         },
         {
             name: "Precision Elite",
+            slug: "precision-elite",
             price: "$2,499",
             image: "/drones/drone2.png",
             category: "Professional",
@@ -171,6 +188,7 @@ const ProductsSection: React.FC = () => {
         },
         {
             name: "Nano Scout",
+            slug: "nano-scout",
             price: "$499",
             image: "/drones/drone3.png",
             category: "Beginner",
@@ -179,6 +197,7 @@ const ProductsSection: React.FC = () => {
         },
         {
             name: "Atlas Heavy",
+            slug: "atlas-heavy",
             price: "$3,999",
             image: "/drones/drone4.png",
             category: "Industrial",
@@ -187,6 +206,7 @@ const ProductsSection: React.FC = () => {
         },
         {
             name: "Mini Spark",
+            slug: "mini-spark",
             price: "$699",
             image: "/drones/drone5.png",
             category: "Consumer",
