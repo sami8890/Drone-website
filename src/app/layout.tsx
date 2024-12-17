@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/layout/navbar";
 import Footer from "./footer/page";
-
+import { ClerkProvider } from '@clerk/nextjs';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -17,6 +17,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
+
     <html lang="en">
       <body className={inter.className} >  
         <Navbar />
@@ -24,6 +26,8 @@ export default function RootLayout({
         <Footer />
       </body>
     </html>
+    </ClerkProvider>
+
   );
 }
 
