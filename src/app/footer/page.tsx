@@ -25,9 +25,12 @@ export default function Footer() {
 
   useEffect(() => {
     // Ensure animations only run on client-side
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
+      // Store the current social icons for the cleanup function
+      const currentSocialIcons = socialIconsRef.current;
+
       // Social Icons Hover Animation
-      socialIconsRef.current.forEach((icon) => {
+      currentSocialIcons.forEach((icon) => {
         if (icon) {
           const hoverAnimation = (scale: number, color: string) => {
             gsap.to(icon, {
@@ -37,11 +40,16 @@ export default function Footer() {
               ease: "power1.out",
             });
           };
-          
-          icon.addEventListener("mouseenter", () =>
-            hoverAnimation(1.2, "#84cc16")
-          );
-          icon.addEventListener("mouseleave", () => hoverAnimation(1, "white"));
+
+          const mouseEnterHandler = () => hoverAnimation(1.2, "#84cc16");
+          const mouseLeaveHandler = () => hoverAnimation(1, "white");
+
+          icon.addEventListener("mouseenter", mouseEnterHandler);
+          icon.addEventListener("mouseleave", mouseLeaveHandler);
+
+          // Store handlers for removal in cleanup
+          (icon as any).mouseEnterHandler = mouseEnterHandler;
+          (icon as any).mouseLeaveHandler = mouseLeaveHandler;
         }
       });
 
@@ -75,7 +83,7 @@ export default function Footer() {
             duration: 0.3,
           })
         );
-        
+
         newsletterInput.addEventListener("blur", () =>
           gsap.to(newsletterRef.current, {
             borderColor: "rgba(255,255,255,0.1)",
@@ -87,15 +95,21 @@ export default function Footer() {
 
       // Cleanup event listeners
       return () => {
-        socialIconsRef.current.forEach((icon) => {
+        currentSocialIcons.forEach((icon) => {
           if (icon) {
-            icon.removeEventListener("mouseenter", () => {});
-            icon.removeEventListener("mouseleave", () => {});
+            icon.removeEventListener(
+              "mouseenter",
+              (icon as any).mouseEnterHandler
+            );
+            icon.removeEventListener(
+              "mouseleave",
+              (icon as any).mouseLeaveHandler
+            );
           }
         });
 
         // Additional cleanup for ScrollTrigger
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       };
     }
   }, []); // Empty dependency array ensures this runs once after initial render
