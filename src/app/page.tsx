@@ -1,15 +1,20 @@
-import Hero from "@/components/ui/Hero-Section";
-import ProductsSection from "./Product/page";
-import TestimonialSection from "@/components/ui/testimonial";
-import { Analytics } from "@vercel/analytics/react";
+"use client"
 
-export default function Home() {
+import DroneHero from "@/components/drone-hero"
+import Footer from "@/components/layout/footer"
+import ProductsSection from "./Product/page"
+import AboutPage from "./about/page"
+
+
+export default function DronePage() {
   return (
-    <section>
-      <Analytics />
-      <Hero />
-      <ProductsSection />
-      <TestimonialSection />
-    </section>
-  );
+    <div className="min-h-screen bg-black">
+      <DroneHero />
+      <div id="products-section">
+        <ProductsSection />
+      </div>
+      <AboutPage/>
+      <Footer />
+    </div>
+  )
 }

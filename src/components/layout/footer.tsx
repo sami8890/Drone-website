@@ -1,158 +1,205 @@
-"use client";
-import React from 'react';
-import Link from 'next/link';
+"use client"
+
+import type React from "react"
+
+import Link from "next/link"
 import {
-    Twitter,
-    Linkedin,
-    Facebook,
-    Instagram,
-    Mail,
-    MapPin,
-    Phone
-} from 'lucide-react';
+  Facebook,
+  Twitter,
+  Instagram,
+  Youtube,
+  Linkedin,
+  Mail,
+  Phone,
+  MapPin,
+  DrillIcon as Drone,
+  Shield,
+  Award,
+  Users,
+} from "lucide-react"
 
-const Footer = () => {
-    const quickLinks = [
-        {
-            title: "Services",
-            links: [
-                { name: "Telehealth", href: "/services/telehealth" },
-                { name: "AI Diagnostics", href: "/services/ai-diagnostics" },
-                { name: "Personal Health Tracking", href: "/services/health-tracking" }
-            ]
-        },
-        {
-            title: "Company",
-            links: [
-                { name: "About Us", href: "/about" },
-                { name: "Our Team", href: "/team" },
-                { name: "Careers", href: "/careers" }
-            ]
-        },
-        {
-            title: "Resources",
-            links: [
-                { name: "Blog", href: "/blog" },
-                { name: "Research", href: "/research" },
-                { name: "Patient Guide", href: "/patient-guide" }
-            ]
-        }
-    ];
+export default function Footer() {
 
-    const socialLinks = [
-        { icon: Twitter, href: "https://twitter.com/healthtech", color: "text-blue-400" },
-        { icon: Linkedin, href: "https://linkedin.com/company/healthtech", color: "text-blue-600" },
-        { icon: Facebook, href: "https://facebook.com/healthtech", color: "text-blue-700" },
-        { icon: Instagram, href: "https://instagram.com/healthtech", color: "text-pink-500" }
-    ];
+  const footerLinks = {
+    products: [
+      { name: "Phantom Pro X", href: "/Product/phantom-pro-x" },
+      { name: "Swift Explorer", href: "/Product/swift-explorer" },
+      { name: "Precision Elite", href: "/Product/precision-elite" },
+      { name: "All Drones", href: "/Product" },
+    ],
+    services: [
+      { name: "Drone Repair", href: "/service" },
+      { name: "Pilot Training", href: "/service" },
+      { name: "Custom Config", href: "/service" },
+      { name: "24/7 Support", href: "/service" },
+    ],
+    company: [
+      { name: "About Us", href: "/about" },
+      { name: "Our Story", href: "/about" },
+      { name: "Careers", href: "/careers" },
+      { name: "Press", href: "/press" },
+    ],
+    support: [
+      { name: "Help Center", href: "/support" },
+      { name: "Contact Us", href: "/contact" },
+      { name: "Warranty", href: "/warranty" },
+      { name: "Returns", href: "/returns" },
+    ],
+  }
 
-    return (
-        <footer className="bg-gradient-to-br from-[#0a0a0a] via-[#161616] to-[#1e1e1e] text-white py-16">
-            <div className="container mx-auto px-6">
-                <div className="grid md:grid-cols-3 gap-12">
-                    {/* Company Introduction */}
-                    <div className="space-y-6">
-                        <div className="flex items-center space-x-3">
-                            <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full flex items-center justify-center">
-                                <span className="text-2xl font-bold">HT</span>
-                            </div>
-                            <h2 className="text-2xl font-bold">HealthTech</h2>
-                        </div>
-                        <p className="text-gray-400">
-                            Revolutionizing healthcare through innovative technology,
-                            personalized diagnostics, and compassionate care.
-                        </p>
+  const socialLinks = [
+    { icon: <Facebook className="w-5 h-5" />, href: "#", name: "Facebook" },
+    { icon: <Twitter className="w-5 h-5" />, href: "#", name: "Twitter" },
+    { icon: <Instagram className="w-5 h-5" />, href: "#", name: "Instagram" },
+    { icon: <Youtube className="w-5 h-5" />, href: "#", name: "YouTube" },
+    { icon: <Linkedin className="w-5 h-5" />, href: "#", name: "LinkedIn" },
+  ]
 
-                        {/* Social Links */}
-                        <div className="flex space-x-4">
-                            {socialLinks.map((social, index) => (
-                                <Link
-                                    key={index}
-                                    href={social.href}
-                                    target="_blank"
-                                    className={`
-                    ${social.color} 
-                    hover:bg-white/10 
-                    p-3 
-                    rounded-full 
-                    transition-all 
-                    duration-300 
-                    border 
-                    border-white/20
-                    hover:scale-110
-                  `}
-                                >
-                                    <social.icon className="w-6 h-6" />
-                                </Link>
-                            ))}
-                        </div>
-                    </div>
+  const trustBadges = [
+    { icon: <Shield className="w-6 h-6" />, text: "2-Year Warranty" },
+    { icon: <Award className="w-6 h-6" />, text: "Industry Leader" },
+    { icon: <Users className="w-6 h-6" />, text: "10K+ Customers" },
+    { icon: <Drone className="w-6 h-6" />, text: "Premium Quality" },
+  ]
 
-                    {/* Quick Links */}
-                    <div className="grid grid-cols-3 gap-8">
-                        {quickLinks.map((section, index) => (
-                            <div key={index}>
-                                <h4 className="font-bold mb-4 text-lg">{section.title}</h4>
-                                <ul className="space-y-2">
-                                    {section.links.map((link, linkIndex) => (
-                                        <li key={linkIndex}>
-                                            <Link
-                                                href={link.href}
-                                                className="text-gray-400 hover:text-white transition-colors"
-                                            >
-                                                {link.name}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        ))}
-                    </div>
+  return (
+    <footer className="bg-gradient-to-br from-gray-900 to-black border-t border-lime-500/20">
+    
 
-                    {/* Contact Information */}
-                    <div className="space-y-6">
-                        <h4 className="font-bold text-lg mb-4">Contact Us</h4>
-                        <div className="space-y-4">
-                            <div className="flex items-center space-x-3">
-                                <Mail className="w-6 h-6 text-blue-500" />
-                                <span className="text-gray-400">support@healthtech.com</span>
-                            </div>
-                            <div className="flex items-center space-x-3">
-                                <Phone className="w-6 h-6 text-emerald-500" />
-                                <span className="text-gray-400">+1 (555) 123-4567</span>
-                            </div>
-                            <div className="flex items-center space-x-3">
-                                <MapPin className="w-6 h-6 text-red-500" />
-                                <span className="text-gray-400">
-                                    123 Innovation Drive,
-                                    Tech City, ST 12345
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      {/* Main Footer Content */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+          {/* Company Info */}
+          <div className="lg:col-span-2">
+            <Link href="/" className="flex items-center space-x-2 mb-6">
+              <span className="text-3xl font-bold text-lime-400">X</span>
+              <span className="text-2xl font-semibold text-white">DroneS</span>
+            </Link>
+            <p className="text-gray-400 mb-6 leading-relaxed">
+              Leading the future of aerial technology with cutting-edge drones designed for professionals and
+              enthusiasts worldwide.
+            </p>
 
-                {/* Bottom Border and Copyright */}
-                <div className="mt-16 pt-8 border-t border-white/10 text-center">
-                    <p className="text-gray-500">
-                        © {new Date().getFullYear()} HealthTech. All Rights Reserved.
-                        <Link
-                            href="/privacy"
-                            className="ml-4 hover:text-white transition-colors"
-                        >
-                            Privacy Policy
-                        </Link>
-                        <Link
-                            href="/terms"
-                            className="ml-4 hover:text-white transition-colors"
-                        >
-                            Terms of Service
-                        </Link>
-                    </p>
-                </div>
+            {/* Contact Info */}
+            <div className="space-y-3 mb-6">
+              <div className="flex items-center text-gray-400">
+                <Phone className="w-4 h-4 mr-3 text-lime-400" />
+                <span>+1 (555) 123-4567</span>
+              </div>
+              <div className="flex items-center text-gray-400">
+                <Mail className="w-4 h-4 mr-3 text-lime-400" />
+                <span>support@xdrones.com</span>
+              </div>
+              <div className="flex items-center text-gray-400">
+                <MapPin className="w-4 h-4 mr-3 text-lime-400" />
+                <span>San Francisco, CA</span>
+              </div>
             </div>
-        </footer>
-    );
-};
 
-export default Footer;
+            {/* Social Links */}
+            <div className="flex space-x-4">
+              {socialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  aria-label={social.name}
+                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-gray-400 hover:text-lime-400 hover:bg-lime-500/20 transition-all"
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Products */}
+          <div>
+            <h4 className="text-white font-semibold mb-6">Products</h4>
+            <ul className="space-y-3">
+              {footerLinks.products.map((link, index) => (
+                <li key={index}>
+                  <Link href={link.href} className="text-gray-400 hover:text-lime-400 transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h4 className="text-white font-semibold mb-6">Services</h4>
+            <ul className="space-y-3">
+              {footerLinks.services.map((link, index) => (
+                <li key={index}>
+                  <Link href={link.href} className="text-gray-400 hover:text-lime-400 transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h4 className="text-white font-semibold mb-6">Company</h4>
+            <ul className="space-y-3">
+              {footerLinks.company.map((link, index) => (
+                <li key={index}>
+                  <Link href={link.href} className="text-gray-400 hover:text-lime-400 transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Support */}
+          <div>
+            <h4 className="text-white font-semibold mb-6">Support</h4>
+            <ul className="space-y-3">
+              {footerLinks.support.map((link, index) => (
+                <li key={index}>
+                  <Link href={link.href} className="text-gray-400 hover:text-lime-400 transition-colors">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Trust Badges */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 pt-8 border-t border-white/10">
+          {trustBadges.map((badge, index) => (
+            <div key={index} className="flex items-center justify-center space-x-3 text-gray-400">
+              <div className="text-lime-400">{badge.icon}</div>
+              <span className="text-sm font-medium">{badge.text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="border-t border-white/10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div className="text-gray-400 text-sm">
+              © 2024 XDroneS. All rights reserved. Built with precision and passion.
+            </div>
+            <div className="flex space-x-6 text-sm">
+              <Link href="/privacy" className="text-gray-400 hover:text-lime-400 transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="text-gray-400 hover:text-lime-400 transition-colors">
+                Terms of Service
+              </Link>
+              <Link href="/cookies" className="text-gray-400 hover:text-lime-400 transition-colors">
+                Cookie Policy
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}

@@ -1,36 +1,40 @@
-import type { Metadata } from "next";
-import { Inter } from 'next/font/google';
-import "./globals.css";
-import Navbar from "@/components/layout/navbar";
-import Footer from "./footer/page";
-import { ClerkProvider } from '@clerk/nextjs';
+import type React from "react"
+import type { Metadata } from "next"
+import { Inter, Bebas_Neue } from "next/font/google"
+import "./globals.css"
+import { CartProvider } from "@/components/cart/cart-provider"
+import { AuthProvider } from "@/components/auth/auth-provider"
+import Navbar from "@/components/layout/navbar"
+import Footer from "@/components/layout/footer"
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] })
+const bebasNeue = Bebas_Neue({
+  weight: ["400"],
+  subsets: ["latin"],
+  variable: "--font-bebas-neue",
+})
 
 export const metadata: Metadata = {
-  title: "My drone app",
-  description: "A modern ecomerce website ",
-};
+  title: "XDroneS - Premium Drone Technology",
+  description: "Experience the future of aerial technology with our cutting-edge drone solutions",
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  if (!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY) {
-    throw new Error("Missing NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY");
-  }
-
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
-      <html lang="en">
-        <body className={inter.className}>
-          <Navbar />
-          {children}
-          <Footer />
-        </body>
-      </html>
-    </ClerkProvider>
-  );
+    <html lang="en">
+      <body className={`${inter.className} ${bebasNeue.variable}`}>
+        <AuthProvider>
+          <CartProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </CartProvider>
+        </AuthProvider>
+      </body>
+    </html>
+  )
 }
-

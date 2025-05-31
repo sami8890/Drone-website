@@ -5,12 +5,15 @@ import type React from "react"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
-import { Mail, Lock, Eye, EyeOff, ArrowLeft } from "lucide-react"
+import { Mail, Lock, User, Eye, EyeOff, ArrowLeft } from "lucide-react"
 
-export default function LoginPage() {
+export default function SignupPage() {
   const router = useRouter()
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
@@ -18,37 +21,37 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError("")
+
+    // Basic validation
+    if (password !== confirmPassword) {
+      setError("Passwords do not match")
+      return
+    }
+
+    if (password.length < 8) {
+      setError("Password must be at least 8 characters")
+      return
+    }
+
     setIsLoading(true)
 
     try {
       // This would normally connect to your authentication system
-      // For demo purposes, we'll just simulate a login
+      // For demo purposes, we'll just simulate a signup
       await new Promise((resolve) => setTimeout(resolve, 1500))
 
-      // Simulate successful login
-      console.log("Logged in with:", email)
+      // Simulate successful signup
+      console.log("Signed up with:", { firstName, lastName, email })
       router.push("/")
-
-      // You would normally set user state here
-      // setUser({ email })
-    } catch (error) {
-      console.error("Login failed:", error)
-      setError("Invalid email or password")
-
+    } catch {
+      setError("An error occurred during signup")
     } finally {
       setIsLoading(false)
     }
   }
 
-  const handleSocialLogin = (provider: string) => {
-    console.log(`Login with ${provider}`)
-    // Implement social login logic here
-  }
-
   return (
     <div className="min-h-screen bg-black text-white">
-      
-
       <div className="container mx-auto px-4 py-16 max-w-md">
         <Link href="/" className="inline-flex items-center text-lime-400 hover:text-lime-300 mb-8">
           <ArrowLeft className="w-4 h-4 mr-2" />
@@ -58,8 +61,8 @@ export default function LoginPage() {
         <div className="bg-gradient-to-br from-gray-900 to-black border border-lime-500/20 rounded-2xl shadow-2xl overflow-hidden">
           <div className="p-8">
             <div className="text-center mb-8">
-              <h1 className="text-3xl font-bold text-white mb-2">Welcome Back</h1>
-              <p className="text-gray-400">Sign in to your account</p>
+              <h1 className="text-3xl font-bold text-white mb-2">Create Account</h1>
+              <p className="text-gray-400">Join the XDroneS community</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -68,6 +71,50 @@ export default function LoginPage() {
                   {error}
                 </div>
               )}
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-300">
+                    First Name
+                  </label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <User className="h-5 w-5 text-gray-500" />
+                    </div>
+                    <input
+                      id="firstName"
+                      name="firstName"
+                      type="text"
+                      required
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                      className="block w-full pl-10 pr-3 py-3 border border-gray-700 rounded-lg bg-gray-800/50 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:border-transparent"
+                      placeholder="John"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-300">
+                    Last Name
+                  </label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <User className="h-5 w-5 text-gray-500" />
+                    </div>
+                    <input
+                      id="lastName"
+                      name="lastName"
+                      type="text"
+                      required
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                      className="block w-full pl-10 pr-3 py-3 border border-gray-700 rounded-lg bg-gray-800/50 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:border-transparent"
+                      placeholder="Doe"
+                    />
+                  </div>
+                </div>
+              </div>
 
               <div className="space-y-2">
                 <label htmlFor="email" className="block text-sm font-medium text-gray-300">
@@ -103,7 +150,6 @@ export default function LoginPage() {
                     id="password"
                     name="password"
                     type={showPassword ? "text" : "password"}
-                    autoComplete="current-password"
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -120,22 +166,46 @@ export default function LoginPage() {
                     </button>
                   </div>
                 </div>
-                <div className="text-right">
-                  <Link href="#" className="text-sm text-lime-400 hover:text-lime-300">
-                    Forgot password?
-                  </Link>
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-300">
+                  Confirm Password
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <Lock className="h-5 w-5 text-gray-500" />
+                  </div>
+                  <input
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    type={showPassword ? "text" : "password"}
+                    required
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    className="block w-full pl-10 pr-3 py-3 border border-gray-700 rounded-lg bg-gray-800/50 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-lime-500 focus:border-transparent"
+                    placeholder="••••••••"
+                  />
                 </div>
               </div>
 
               <div className="flex items-center">
                 <input
-                  id="remember-me"
-                  name="remember-me"
+                  id="terms"
+                  name="terms"
                   type="checkbox"
+                  required
                   className="h-4 w-4 text-lime-500 focus:ring-lime-500 border-gray-700 rounded bg-gray-800"
                 />
-                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-400">
-                  Remember me
+                <label htmlFor="terms" className="ml-2 block text-sm text-gray-400">
+                  I agree to the{" "}
+                  <Link href="#" className="text-lime-400 hover:text-lime-300">
+                    Terms of Service
+                  </Link>{" "}
+                  and{" "}
+                  <Link href="#" className="text-lime-400 hover:text-lime-300">
+                    Privacy Policy
+                  </Link>
                 </label>
               </div>
 
@@ -149,28 +219,26 @@ export default function LoginPage() {
                       : "hover:from-lime-600 hover:to-lime-700 hover:shadow-lg hover:shadow-lime-500/25"
                   }`}
                 >
-                  {isLoading ? "Signing in..." : "Sign In"}
+                  {isLoading ? "Creating Account..." : "Create Account"}
                 </button>
               </div>
 
               <div className="text-center text-gray-400 text-sm">
-                Don&apos;t have an account?{" "}
-                <Link href="/signup" className="text-lime-400 hover:text-lime-300">
-                  Sign up
+                Already have an account?{" "}
+                <Link href="/login" className="text-lime-400 hover:text-lime-300">
+                  Sign in
                 </Link>
               </div>
 
               <div className="relative flex items-center justify-center">
                 <div className="border-t border-gray-700 flex-grow"></div>
-                <span className="mx-4 text-sm text-gray-500">or continue with</span>
+                <span className="mx-4 text-sm text-gray-500">or sign up with</span>
                 <div className="border-t border-gray-700 flex-grow"></div>
               </div>
 
               <div className="grid grid-cols-3 gap-3">
-                {/* Google Login */}
                 <button
                   type="button"
-                  onClick={() => handleSocialLogin("google")}
                   className="py-2 px-4 border border-gray-700 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-colors flex items-center justify-center"
                 >
                   <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -192,22 +260,16 @@ export default function LoginPage() {
                     />
                   </svg>
                 </button>
-
-                {/* Facebook Login */}
                 <button
                   type="button"
-                  onClick={() => handleSocialLogin("facebook")}
                   className="py-2 px-4 border border-gray-700 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-colors flex items-center justify-center text-blue-400"
                 >
                   <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z" />
                   </svg>
                 </button>
-
-                {/* GitHub Login */}
                 <button
                   type="button"
-                  onClick={() => handleSocialLogin("github")}
                   className="py-2 px-4 border border-gray-700 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-colors flex items-center justify-center"
                 >
                   <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
