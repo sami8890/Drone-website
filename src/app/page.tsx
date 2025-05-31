@@ -1,7 +1,6 @@
 "use client"
 
 import DroneHero from "@/components/drone-hero"
-import Footer from "@/components/layout/footer"
 import ProductsSection from "./Product/page"
 import AboutPage from "./about/page"
 
@@ -14,7 +13,6 @@ export default function DronePage() {
         <ProductsSection />
       </div>
       <AboutPage/>
-      <Footer />
     </div>
   )
 }
